@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import User from '../components/User';
-import Page from '../components/Page';
+import User from '../components/User/User';
+import Page from '../components/Page/Page';
 import { setYear } from '../actions/PageActions';
 import '../App.css';
 

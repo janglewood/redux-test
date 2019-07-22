@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import { UserGreet } from './styled';
 
 export default class User extends Component {
     render() {
         const { name } = this.props;
         return (
-            <div className='user'>
+            <UserGreet>
                 <p>Hello, my name is {name}</p>
-            </div>
+            </UserGreet>
         );
     }
 }
