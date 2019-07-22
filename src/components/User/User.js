@@ -3,10 +3,13 @@ import propTypes from 'prop-types';
 import { UserGreet } from './styled';
 
 export default class User extends Component {
+    loginClick() {
+        this.props.handleLogin();
+    }
     render() {
         const { name } = this.props;
         return (
-            <UserGreet>
+            <UserGreet onClick={this.loginClick}>
                 <p>Hello, my name is {name}</p>
             </UserGreet>
         );

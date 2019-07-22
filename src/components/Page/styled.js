@@ -8,10 +8,10 @@ export const PageContainer = styled.div`
 export const YearButton = styled.button`
     border: 2px solid #dbd15c;
     outline: none;
-    margin: 5px;
+    margin: 3px;
     background-color: #282c34;
     border-radius: 3px;
-    padding 10px;
+    padding: 20px;
     font-weight: bold;
     color: white;
 `;

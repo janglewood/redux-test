@@ -9,11 +9,11 @@ import { YearButton,
 export default class Page extends Component {
     onBtnClick = e => {
         const year = +e.currentTarget.innerText;
-        this.props.setYear(year);
+        this.props.getPhotos(year);
     }
 
     render() {
-        const { year, photos } = this.props;
+        const { year, photos, isFetching } = this.props;
         return (
             <PageContainer>
                 <ButtonContainer>
@@ -26,7 +26,10 @@ export default class Page extends Component {
                     <YearButton onClick={this.onBtnClick}>2018</YearButton>
                     <YearButton onClick={this.onBtnClick}>2019</YearButton>
                 </ButtonContainer>
-                <PhotoInfo>You have {photos.length} photos from {year} year</PhotoInfo>
+                <PhotoInfo>{year} year</PhotoInfo>
+                <div>
+                    {isFetching ? <p>Loading...</p> : <p>You have {photos.length} photos</p>}
+                </div>
             </PageContainer>
 
         );
@@ -36,5 +39,6 @@ export default class Page extends Component {
 Page.propTypes = {
     photos: propTypes.array.isRequired,
     year: propTypes.number.isRequired,
-    setYear: propTypes.func.isRequired,
+    getPhotos: propTypes.func.isRequired,
+    isFetching: propTypes.bool.isRequired,
 }
