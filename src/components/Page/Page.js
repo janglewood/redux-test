@@ -14,6 +14,8 @@ export default class Page extends Component {
 
     render() {
         const { year, photos, isFetching } = this.props;
+        let photosURLs = photos.map(item => item.sizes[item.sizes.length - 1].url) || [];
+        console.log(photosURLs);
         return (
             <PageContainer>
                 <ButtonContainer>

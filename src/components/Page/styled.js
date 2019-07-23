@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import Button from '../Button/styled';
 
 export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;
 
-export const YearButton = styled.button`
+export const YearButton = styled(Button)`
     border: 2px solid #dbd15c;
     outline: none;
     margin: 3px;

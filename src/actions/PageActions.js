@@ -9,17 +9,16 @@ export function getPhotos(year) {
             payload: year,
         });
 
-        // setTimeout(() => {
-        //     dispatch({
-        //         type: GET_PHOTOS_SUCCESS,
-        //         payload: [1, 2, 3, 4, 5],
-        //     })
-        // }, 2000);
-        fetch('http://example.com/movies.json')
-            .then(res => {
-                res.json();
-            })
-            .then(body => console.log(body))
-            .catch(err => console.log(err))
+        //eslint-disable-next-line no-undef
+        VK.Api.call('photos.getAll', { extended: 1, count: 200, offset: 0, v: '5.80' },
+            r => {
+                console.log(r.response);
+                if (r.response) {
+                    dispatch({
+                        type: GET_PHOTOS_SUCCESS,
+                        payload: r.response.items,
+                    });
+                }
+            });
     }
 }

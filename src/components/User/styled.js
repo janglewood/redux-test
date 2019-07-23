@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import Button from '../Button/styled';
 
-export const UserGreet = styled.div`
+export const LoginButton = styled(Button)`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

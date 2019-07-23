@@ -17,6 +17,8 @@ class App extends Component {
         <User
           name={user.name}
           handleLogin={handleLoginAction}
+          isFetching={user.isFetching}
+          error={user.error}
         />
         <Page
           photos={page.photos}
@@ -38,7 +40,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => ({
     getPhotosAction: year => dispatch(getPhotos(year)),
-    handleLoginAction: username => dispatch(handleLogin(username)),
+    handleLoginAction: () => dispatch(handleLogin()),
 });
 
 export default connect(
