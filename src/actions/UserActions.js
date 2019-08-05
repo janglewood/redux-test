@@ -7,7 +7,8 @@ export function handleLogin() {
         dispatch({
             type: LOGIN_REQUEST,
         })
-
+        //eslint-disable-next-line no-undef
+        VK.Auth.getLoginStatus(st => console.log(st.status) === 'connected'); //перед рендером кнопки логин делать эту проверку
         //eslint-disable-next-line no-undef
         VK.Auth.login(r => {
             if(r.session) {

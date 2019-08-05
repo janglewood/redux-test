@@ -12,13 +12,21 @@ export default class Page extends Component {
         this.props.getPhotos(year);
     }
 
+    create
+
     render() {
         const { year, photos, isFetching } = this.props;
-        let photosURLs = photos.map(item => item.sizes[item.sizes.length - 1].url) || [];
-        console.log(photosURLs);
+        const currentYearPhotosInfo = photos.filter(item => new Date(item.date * 1000).getFullYear() === year);
+        const sortedPhotosInfo = currentYearPhotosInfo.sort((a, b) => b.likes.count - a.likes.count);
+        console.log(sortedPhotosInfo);
+        const currentYearPhotos = currentYearPhotosInfo.map(item => {
+            const image = <img src={item.sizes[item.sizes.length - 1].url} width="200px" height="200px" alt="VKpic"></img>;
+            return <div key={item.id}>{image}<p>{item.likes.count}❤</p></div>
+        });
         return (
             <PageContainer>
                 <ButtonContainer>
+                    <YearButton onClick={this.onBtnClick}>2011</YearButton>
                     <YearButton onClick={this.onBtnClick}>2012</YearButton>
                     <YearButton onClick={this.onBtnClick}>2013</YearButton>
                     <YearButton onClick={this.onBtnClick}>2014</YearButton>
@@ -30,10 +38,9 @@ export default class Page extends Component {
                 </ButtonContainer>
                 <PhotoInfo>{year} year</PhotoInfo>
                 <div>
-                    {isFetching ? <p>Loading...</p> : <p>You have {photos.length} photos</p>}
+                    {isFetching ? <p>Loading...</p> : <div><p>You have {currentYearPhotos.length} photo for {year} year</p>{currentYearPhotos}</div>}
                 </div>
             </PageContainer>
-
         );
     }
 }

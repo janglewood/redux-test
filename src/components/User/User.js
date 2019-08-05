@@ -6,6 +6,7 @@ export default class User extends Component {
     renderTemplate = () => {
         const { name, isFetching, error } = this.props;
         if (error) {
+            console.log(error, '---', name);
             return <p>ERROR</p>
         } else if (isFetching) {
             return <p>Loading...</p>
@@ -18,6 +19,7 @@ export default class User extends Component {
         }
     }
     render() {
+        console.log('<User/> render');
         return (
             <div>{this.renderTemplate()}</div>
         );
@@ -27,6 +29,6 @@ export default class User extends Component {
 User.propTypes = {
     name: propTypes.string.isRequired,
     isFetching: propTypes.bool.isRequired,
-    error: propTypes.object,
+    // error: propTypes.object,
     handleLogin: propTypes.func.isRequired,
 };
